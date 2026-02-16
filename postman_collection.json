@@ -1,0 +1,151 @@
+{
+  "info": {
+    "name": "Fullstack Hiring Challenge - Prachi Shardul",
+    "_postman_id": "12345678-1234-1234-1234-123456789000",
+    "description": "API collection for Fullstack Hiring Challenge - JWT Authentication & Notes CRUD",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Prachi\",\n  \"email\": \"prachi@test.com\",\n  \"password\": \"123456\",\n  \"country\": \"India\",\n  \"bio\": \"Frontend Developer\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/auth/register",
+          "host": ["{{BASE_URL}}"],
+          "path": ["auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"prachi@test.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/auth/login",
+          "host": ["{{BASE_URL}}"],
+          "path": ["auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get Profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/auth/profile",
+          "host": ["{{BASE_URL}}"],
+          "path": ["auth", "profile"]
+        }
+      }
+    },
+    {
+      "name": "Create Note",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"First Note\",\n  \"content\": \"Testing note from Postman\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/notes",
+          "host": ["{{BASE_URL}}"],
+          "path": ["notes"]
+        }
+      }
+    },
+    {
+      "name": "Get Notes",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/notes",
+          "host": ["{{BASE_URL}}"],
+          "path": ["notes"]
+        }
+      }
+    },
+    {
+      "name": "Update Note",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Title\",\n  \"content\": \"Updated content from Postman\"\n}"
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/notes/:id",
+          "host": ["{{BASE_URL}}"],
+          "path": ["notes", ":id"]
+        }
+      }
+    },
+    {
+      "name": "Delete Note",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{TOKEN}}"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/notes/:id",
+          "host": ["{{BASE_URL}}"],
+          "path": ["notes", ":id"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:5000/api"
+    },
+    {
+      "key": "TOKEN",
+      "value": ""
+    }
+  ]
+}
